@@ -40,6 +40,7 @@
     - phpize
     - ./configure
     - make
+  tags: skip_ansible_lint
 
 - name: Ensure Xdebug module path exists.
   file:
