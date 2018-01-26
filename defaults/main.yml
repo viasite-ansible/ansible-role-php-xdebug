@@ -1,5 +1,5 @@
 ---
-workspace: /root
+workspace: "/root/php{{ php_version }}"
 
 php_xdebug_version: 2.5.0
 

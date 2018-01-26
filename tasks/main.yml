@@ -24,6 +24,13 @@
     - build-essential
   when: ansible_os_family == 'Debian'
 
+- name: Ensure workspace directory exists.
+  file:
+    path: "{{ workspace }}"
+    state: directory
+    mode: 0775
+  when: workspace is defined and workspace != '/root'
+
 - name: Untar Xdebug.
   unarchive:
     src: "https://xdebug.org/files/xdebug-{{ php_xdebug_version }}.tgz"
@@ -37,8 +44,8 @@
     chdir={{ workspace }}/xdebug-{{ php_xdebug_version }}
     creates={{ workspace }}/xdebug-{{ php_xdebug_version }}/modules/xdebug.so
   with_items:
-    - phpize
-    - ./configure
+    - "phpize{{ php_version | default('') }}"
+    - "./configure --with-php-config=/usr/bin/php-config{{ php_version | default('') }}" 
     - make
   tags: skip_ansible_lint
 
