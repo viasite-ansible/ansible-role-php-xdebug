@@ -45,7 +45,7 @@
     creates={{ workspace }}/xdebug-{{ php_xdebug_version }}/modules/xdebug.so
   with_items:
     - "phpize{{ php_version | default('') }}"
-    - "./configure --with-php-config=/usr/bin/php-config{{ php_version | default('') }}" 
+    - "./configure --with-php-config=/usr/bin/php-config{{ php_version | default('') }}"
     - make
   tags: skip_ansible_lint
 
