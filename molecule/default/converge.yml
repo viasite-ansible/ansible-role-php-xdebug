@@ -16,7 +16,7 @@
       when: ansible_os_family == 'RedHat'
     - role: geerlingguy.php-versions
     - role: geerlingguy.php
-    - role: geerlingguy.php-xdebug
+    - role: ansible-role-php-xdebug
 
   post_tasks:
     - name: Run test script to confirm XDebug is working.
